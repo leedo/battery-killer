@@ -2,6 +2,7 @@
   <head>
     <title>Battery Killer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
@@ -82,6 +83,7 @@
         margin: 0;
         padding: 0;
         font-family: sans-serif;
+        background: #000;
       }
 
       .error {
@@ -89,24 +91,47 @@
         color: red;
       }
 
-      #log li {
-        margin-bottom: 10px;
-        line-height: 1.3em;
-        font-family: monospace;
+      #log {
+        margin-left: 0;
+        padding-left: 0;
       }
 
+      #log li {
+        line-height: 1.3em;
+        font-family: monospace;
+        list-style: none;
+        padding: 0;
+        margin-left: 0;
+        font-size: 11px;
+        padding-bottom: 5px;
+      }
+ 
+      #log li + li {
+        padding-top: 5px;
+        border-top: 1px solid #ccc;
+      }
+
+      #setup {
+        margin-bottom: 20px;
+      }
       #setup-form,
       #setup-log {
-        padding: 0 10px;
+        padding: 10px;
       }
 
       #log {
         margin-top: 0;
       }
 
+      #setup-form {
+        background: #fff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
       #setup-log {
         background: #eee;
-        padding: 10px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
       }
 
       #setup input,
@@ -114,6 +139,10 @@
       #setup textarea,
       #setup button {
         display : block;
+      }
+
+      #setup label {
+        font-size: 14px;
       }
 
       #setup textarea {
@@ -135,16 +164,17 @@
         display: none;
       }
 
-      h1 {
+      h1, h3 {
         background: #000;
         color: #fff;
-        padding: 10px;
-        font-size: 24px;
+        padding: 5px 10px;
+        margin: 0;
+        font-size: 16px;
       }
 
       h3 {
-        margin: 20px 0 0 0;
         padding: 10px;
+        font-size: 16px;
         background: #ccc;
         color: #666;
       }
