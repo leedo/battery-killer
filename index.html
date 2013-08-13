@@ -5,7 +5,7 @@
     <script type="text/javascript">
       $(document).ready(function() {
         if (! localStorage in window) {
-          alert("No localStorage support!");
+          $('#setup').html($('<p/>', {'class':'error'}).html("No localStorage support"));
           return;
         }
 
@@ -21,13 +21,17 @@
         if (runs) {
           $(runs).each(function(i,run) {
             if (!run) return;
-            var line = "start: " + run["start"] + "<br>end: " + run["end"];
-            log.append($('<li/>').html(line));
+            log.prepend($('<li/>').html(run.join("<br>")));
           });
         }
         else {
           localStorage["runs"] = JSON.stringify([]);
         }
+
+        $('#clear').on('click', function() {
+          localStorage["runs"] = null;
+          $('#log').html('');
+        });
 
         $('#start').on('click', function() {
           var urls = $('#urls').val().split(/[\s\n]/);
@@ -48,14 +52,18 @@
 
           var runs = JSON.parse(localStorage["runs"]);
           var current_run = runs.length + 1;
-          runs[current_run] = { start: new Date(), end: new Date() };
+          runs[current_run] = [
+            window.navigator.userAgent,
+            (new Date()).toString(),
+            (new Date()).toString()
+          ];
 
           localStorage["runs"] = JSON.stringify(runs);
 
           var i = 0;
           frame.attr('src', urls[i++]);
           var timer = setInterval(function() {
-            runs[current_run]["end"] = new Date();
+            runs[current_run][1] = (new Date()).toString();
             localStorage["runs"] = JSON.stringify(runs);
             frame.attr('src', urls[i++]);
             if (i >= urls.length) i = 0;
@@ -67,29 +75,43 @@
       body {
         margin: 0;
         padding: 0;
+        font-family: sans-serif;
       }
+      .error { color: red }
+
+      #log li {
+        margin-bottom: 10px;
+        line-height: 1.3em;
+        font-family: monospace;
+      }
+
       #setup {
         width: 400px;
         margin: 40px auto;
       }
+
       #setup input,
       #setup label,
       #setup textarea,
       #setup button {
         display : block;
       }
+
       #setup textarea {
         width: 400px;
         height: 200px;
         margin-bottom: 20px;
       }
+
       #setup input {
         width: 40px;
         margin-bottom: 20px;
       }
+
       #frame {
         display: block;
       }
+
       #frame.hidden {
         display: none;
       }
@@ -104,6 +126,7 @@
       <button id="start">Start</button>
       <h3>Previous Runs</h3>
       <ul id="log"></ul>
+      <button id="clear">Clear</button>
     </div>
     <iframe frameborder="0" scrolling="auto" id="frame" class="hidden"></iframe>
   </body>
