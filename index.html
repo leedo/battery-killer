@@ -1,3 +1,4 @@
+
 <html>
   <head>
     <title>Battery Killer</title>
@@ -180,12 +181,11 @@
       }
 
       button {
-        padding: 0;
         border-width: 1px;
         margin: 0;
         border-radius: 4px;
         color: #fff;
-        padding: 5px;
+        padding: 5px 15px;
         cursor: pointer;
         font-size: 18px;
         box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
@@ -207,7 +207,7 @@
       <label for="urls">List of URLs (separated by space)</label>
       <textarea id="urls" name="urls"></textarea>
       <label for="interval">Time between refreshes (in seconds)</label>
-      <input type="text" id="interval" name="interval" value="15">
+      <input type="number" id="interval" name="interval" value="60" pattern="\d*">
       <button id="start">Start</button>
       </div>
       <h3>Previous Runs</h3>
