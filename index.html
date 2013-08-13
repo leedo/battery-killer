@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <title>Battery Killah</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        if (! localStorage in window) {
+          alert("No localStorage support!");
+          return;
+        }
+
+        var log = $('#log');
+
+        try {
+          var runs = JSON.parse(localStorage["runs"]);
+        }
+        catch(e) {
+          alert("Busted log!");
+        }
+
+        if (runs) {
+          $(runs).each(function(i,run) {
+            if (!run) return;
+            var line = "start: " + run["start"] + "<br>end: " + run["end"];
+            log.append($('<li/>').html(line));
+          });
+        }
+        else {
+          localStorage["runs"] = JSON.stringify([]);
+        }
+
+        $('#start').on('click', function() {
+          var urls = $('#urls').val().split(/[\s\n]/);
+          var interval = $('#interval').val();
+
+          if (urls.length == 0) {
+            alert("Need some URLs");
+            return;
+          }
+
+          var frame = $('#frame');
+          var setup = $('#setup');
+
+          setup.hide();
+          frame.removeClass("hidden");
+          frame.height($(window).height());
+          frame.width($(window).width());
+
+          var runs = JSON.parse(localStorage["runs"]);
+          var current_run = runs.length + 1;
+          runs[current_run] = { start: new Date(), end: new Date() };
+
+          localStorage["runs"] = JSON.stringify(runs);
+
+          var i = 0;
+          frame.attr('src', urls[i++]);
+          var timer = setInterval(function() {
+            runs[current_run]["end"] = new Date();
+            localStorage["runs"] = JSON.stringify(runs);
+            frame.attr('src', urls[i++]);
+            if (i >= urls.length) i = 0;
+          }, interval * 1000);
+        });
+      });
+    </script>
+    <style type="text/css">
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #setup {
+        width: 400px;
+        margin: 40px auto;
+      }
+      #setup input,
+      #setup label,
+      #setup textarea,
+      #setup button {
+        display : block;
+      }
+      #setup textarea {
+        width: 400px;
+        height: 200px;
+        margin-bottom: 20px;
+      }
+      #setup input {
+        width: 40px;
+        margin-bottom: 20px;
+      }
+      #frame {
+        display: block;
+      }
+      #frame.hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="setup">
+      <label for="urls">List of URLs (separated by space)</label>
+      <textarea id="urls" name="urls"></textarea>
+      <label for="interval">Time between refreshes (in seconds)</label>
+      <input type="text" id="interval" name="interval" value="15">
+      <button id="start">Start</button>
+      <h3>Previous Runs</h3>
+      <ul id="log"></ul>
+    </div>
+    <iframe frameborder="0" scrolling="auto" id="frame" class="hidden"></iframe>
+  </body>
+</html>
