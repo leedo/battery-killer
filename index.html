@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
     <script type="text/javascript">
       $(document).ready(function() {
         if (! localStorage in window) {
@@ -12,14 +13,12 @@
           return;
         }
 
-        var log = $('#log');
-        var runs;
+        var log = $('#log')
+          , runs = localStorage["runs"];
 
         try {
-          runs = localStorage["runs"];
-          if (runs) {
+          if (runs)
             runs = JSON.parse(runs);
-          }
         }
         catch(e) {
           runs = null;
@@ -42,34 +41,34 @@
         });
 
         $('#start').on('click', function() {
-          var urls = $('#urls').val().split(/[\s\n]/);
-          var interval = $('#interval').val();
+          var urls = $('#urls').val().split(/[\s\n]/)
+            , interval = $('#interval').val();
 
           if (urls.length == 0) {
             alert("Need some URLs");
             return;
           }
 
-          var frame = $('#frame');
-          var setup = $('#setup');
+          var frame = $('#frame')
+            , setup = $('#setup')
+            , i = 0
+            , runs = JSON.parse(localStorage["runs"])
+            , current_run = runs.length + 1;
 
-          setup.hide();
-          frame.removeClass("hidden");
-          frame.height($(window).height());
-          frame.width($(window).width());
-
-          var runs = JSON.parse(localStorage["runs"]);
-          var current_run = runs.length + 1;
           runs[current_run] = [
             window.navigator.userAgent,
             (new Date()).toString(),
             (new Date()).toString()
           ];
 
+          setup.hide();
+          frame.removeClass("hidden");
+          frame.height($(window).height());
+          frame.width($(window).width());
+          frame.attr('src', urls[i++]);
+
           localStorage["runs"] = JSON.stringify(runs);
 
-          var i = 0;
-          frame.attr('src', urls[i++]);
           var timer = setInterval(function() {
             runs[current_run][1] = (new Date()).toString();
             localStorage["runs"] = JSON.stringify(runs);
@@ -79,6 +78,7 @@
         });
       });
     </script>
+
     <style type="text/css">
       body {
         margin: 0;
