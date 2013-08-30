@@ -58,7 +58,9 @@
           runs[current_run] = [
             window.navigator.userAgent,
             (new Date()).toString(),
-            (new Date()).toString()
+            (new Date()).toString(),
+            interval + " second interval",
+            "URLs: " + urls.join(", "),
           ];
 
           setup.hide();
@@ -204,7 +206,7 @@
     <div id="setup">
       <h1>Battery Killer</h1>
       <div id="setup-form">
-      <label for="urls">List of URLs (separated by space)</label>
+      <label for="urls">List of URLs (separated by space or line break)</label>
       <textarea id="urls" name="urls"></textarea>
       <label for="interval">Time between refreshes (in seconds)</label>
       <input type="number" id="interval" name="interval" value="60" pattern="\d*">
