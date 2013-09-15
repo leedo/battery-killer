@@ -1,0 +1,142 @@
+/* Product browser overrides
+----------------------------*/
+.productbrowser { margin-bottom:12px; }
+.productbrowser .pb-slide { position:relative; }
+#pb-mac.productbrowser .pb-pageindicator { border-bottom:none; border-top:1px solid #d7d7d7; background:#fff; }
+.productbrowser .pb-pageindicator b.caret { width:24px; height:11px; margin-top:-1px; margin-left:-13px; background-image:url(http://images.apple.com/v/mac/home/f/images/caret_active.png); }
+.productbrowser .pb-pageindicator a.page { padding-top:13px; }
+
+
+/* Platterization
+------------------------*/
+html { background:#f2f2f2; width:100%; height:100%; }
+body { position:relative; z-index:1; min-height:100%; width:980px; margin:0 auto; padding:0 22px; background:#fff; border:1px solid #d9d9d9; overflow-x:hidden; overflow-y:auto; *overflow-y:visible;
+	-webkit-box-shadow:0 0 4px rgba(0,0,0,.3);
+	   -moz-box-shadow:0 0 4px rgba(0,0,0,.3);
+	        box-shadow:0 0 4px rgba(0,0,0,.3);
+}
+body:nth-child(1n) { border:none; }
+body:before { content:'.'; display:block; height:0; clear:both; visibility:hidden; }
+
+#main,
+#main #content { position:static; padding:0; background:transparent; }
+#main .content,
+#main #content { border:none;
+	-webkit-box-shadow:none;
+	   -moz-box-shadow:none;
+	        box-shadow:none;
+	-webkit-border-radius:0;
+	   -moz-border-radius:0;
+	        border-radius:0;
+}
+
+@media only screen and (max-width:1024px) {
+	html { background:#fff; }
+	body {
+		-webkit-box-shadow:none;
+		   -moz-box-shadow:none;
+		        box-shadow:none;
+	}
+}
+
+@media only screen and (max-width:1023px) {
+	body { overflow:auto; }
+}
+
+@media only screen and (max-device-width:768px) {
+	body { width:1024px; padding-left:0; padding-right:0; }
+	#main { overflow:hidden; width:980px; padding:0 22px; }
+}
+
+#globalfooter { clear:both; }
+
+
+/* Misc
+------------------------*/
+.flushpad,
+.padright { padding-right:22px; }
+
+.flushpad,
+.padleft { padding-left:22px; }
+
+.flushpad,
+.flushright { margin-right:-22px; }
+
+.flushpad,
+.flushleft { margin-left:-22px; }
+
+.replaced { text-indent:-1000em; overflow:hidden; height:0; margin:0; padding:0; }
+
+a.block { display:block; color:inherit; text-decoration:none; }
+a.block * { cursor:pointer; }
+a.block span.link,
+a.block span.more { color:#08c; }
+a.block span.more { white-space:nowrap; text-align:left; padding-right:10px; background:url(http://images.apple.com/global/elements/arrows/morearrow_08c.gif) no-repeat 100% 50%; }
+a.block:hover span.link,
+a.block:hover span.more { text-decoration:underline; }
+
+a.close { color:#888; display:block; float:left; padding-left:18px; background:url(http://images.apple.com/global/elements/buttons/close.png) no-repeat 0 0; text-decoration:none; text-transform:lowercase; }
+a.close:hover { color:#08c; background-position:0 -50px; }
+a.close.right { float:right; padding-right:18px; padding-left:0; background-position:100% 0; text-transform:none; }
+a.close.right:hover { background-position:100% -50px; }
+a.close.dark { color:#fff; background-image:url(http://images.apple.com/global/elements/buttons/close_dark_bg.png); }
+a.close.dark:hover { color:#00a2ff; background-image:url(http://images.apple.com/global/elements/buttons/close_dark_bg.png); }
+
+.right { float:right; }
+.left { float:left; }
+
+#main .sosumi { padding:18px 20px 0; }
+
+
+/* Product Browser
+------------------------*/
+.productbrowser li.pb-macbookair { margin-left:5px; }
+.productbrowser li.pb-macbookpro { margin-left:35px; margin-right:12px; }
+.productbrowser li.pb-imac       { margin-left:18px; margin-right:18px; }
+.productbrowser li.pb-macosx     { margin-left:-20px; }
+
+.productbrowser li.pb-magicmouse     { margin-left:-12px; }
+.productbrowser li.pb-magictrackpad  { margin-left:-32px; margin-right:4px; }
+.productbrowser li.pb-airportexpress { margin-left:-4px; }
+.productbrowser li.pb-airportextreme { margin-left:-13px; }
+.productbrowser li.pb-timecapsule    { margin-left:-6px; }
+
+.productbrowser li.pb-ilife { margin-right:16px; }
+.productbrowser li.pb-iwork { margin-right:10px; }
+.productbrowser li.pb-safari { margin-right:-1px; }
+.productbrowser li.pb-finalcut { margin-left:4px; margin-right:3px; }
+
+.productbrowser li.pb-displays,
+.productbrowser li.pb-displays a { width:150px; }
+
+.productbrowser li.pb-macosxserver { margin-left:6px; margin-right:12px; }
+.productbrowser li.pb-macproserver { margin-right:16px; }
+.productbrowser li.pb-ard          { margin-right:19px; }
+
+
+/* Footer
+------------------------*/
+#globalfooter { margin-top:12px; *width:980px; }
+#globalfooter p.sosumi { text-align:right; margin:-26px 0 0; *margin-top:-17px; }
+
+
+/* Buy Strip
+------------------------*/
+#buystrip { padding:35px 0 8px; border-top:1px solid #dbdbdb; text-align:center; }
+#buystrip .grid3col { width:980px; margin:0 22px; padding-bottom:20px; }
+#buystrip .grid3col .column { width:286px; padding:4px 20px 12px; margin-left:0; *zoom:1; }
+#buystrip .grid3col .column h2 { margin-bottom:3px; }
+#buystrip .grid3col .column p { font-size:12px; line-height:1.41667em; color:#333; margin-bottom:14px; }
+#buystrip .grid3col .column a:hover { text-decoration:none; }
+#buystrip .grid3col .column a:hover em { text-decoration:underline; }
+#buystrip .grid3col .column p.sosumi { width:auto; padding:0; margin:0 auto; }
+#buystrip .grid3col .column em { font-size:16px; font-style:normal; }
+
+#buystrip .bottomstrip { padding:7px 0 0 10px; text-align:left; border-top:1px solid #fff; }
+#buystrip .bottomstrip li { display:-moz-inline-stack; display:inline-block; *display:inline; *zoom:1; padding-top:12px; padding-bottom:7px; font-size:11px; line-height:20px; }
+#buystrip .bottomstrip li.education { margin-left:64px; }
+#buystrip .bottomstrip li.appointments { position:relative; z-index:1;margin-right:42px; }
+#buystrip .bottomstrip li.appointments img { float:left; margin:-1px 10px 0 0; position:relative; z-index:1; }
+#buystrip .bottomstrip a { color:#333; }
+#buystrip .bottomstrip a:hover { text-decoration:none; }
+#buystrip .bottomstrip a:hover span { text-decoration:underline; }

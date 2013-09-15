@@ -1,0 +1,47 @@
+/* Showcase
+------------------------*/
+#showcase .promo-lead,
+#showcase .promo-lead .lead { float:none; width:1024px; height:704px; }
+#showcase .promo-lead { position:relative; font-size:16px; line-height:1.5; color:#000; border-top:1px solid #f1f1f1; z-index:1; }
+#showcase .promo-lead a.block { color:#000; }
+#showcase .promo-lead .lead { display:block; }
+
+#showcase.promo-rotation .promo-lead .lead { position:absolute; }
+
+#showcase .promos { height:260px; position:relative; z-index:2; border-bottom:1px solid #dbdbdb; }
+#showcase .promos a img { border-right:1px solid #dbdbdb; }
+#showcase .promos a.third img { border-right:none; }
+
+/* Why Mac
+------------------------*/
+#whymac { padding:47px 0 38px; }
+#whymac a.more:hover { text-decoration:underline; }
+#whymac h1 { font-size:1.5em; font-weight:normal; margin-bottom:0; }
+#whymac p { font-size:1.083em; line-height:1.54em; } /* 13px */
+#whymac ul { font-size:1.167em; line-height:1.54em; }
+#whymac .column { position:relative; z-index:1; min-height:192px; _height:192px; }
+#whymac .column img.bottom { position:absolute; z-index:1; }
+
+#whymac .column.first { width:284px; padding-right:196px; padding-left:10px; border-right:1px solid #e1e1e1; }
+#whymac ul li.first a { margin-right:10px; }
+#whymac ul li.second a { padding-left:10px; border-left:1px solid #b4b4b4; }
+#whymac .first img.bottom { bottom:0; right:20px; }
+#whymac .column.last { width:297px; padding-right:160px; padding-left:30px; }
+#whymac .last h1 { margin-right:-40px; }
+#whymac .last img.bottom { bottom:7px; right:1px; }
+
+/* BTS Banner
+------------------------*/
+#bts-banner { width: 1024px; margin-left: -22px; border-bottom: 1px solid #dbdbdb; position:relative; font-size:1.167em; line-height:1.45em; }
+#bts-banner .last { width:530px; padding-right: 23px; background: 0 16px no-repeat; }
+#bts-banner.lc .last { width:545px; padding-right: 0; }
+#bts-banner a { width: 980px; padding:14px 45px 0 0; min-height:127px; }
+#bts-banner a.more:hover { text-decoration:underline; }
+#bts-banner h1 { text-indent: -9999px; }
+#bts-banner p { margin:-11px 0 0; *margin:-13px 0 0; color:#000; }
+#bts-banner img.left { margin: 0; position: absolute; bottom: 0; left: 9px; }
+@media only screen and (max-device-width:768px) and (max-width:1024px) {
+	#bts-banner .last { background-position-y: 21px;}
+	#bts-banner p { margin-top: -6px; }
+
+}

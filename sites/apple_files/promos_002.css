@@ -1,0 +1,5 @@
+#bts-banner .last { background-image: url('http://images.apple.com/mac/home/images/bts-title.png'); }
+#bts-banner.lc .last { background-image: url('http://images.apple.com/mac/home/images/bts-title-lc.png'); }
+
+#whymac ul { overflow:hidden; }
+#whymac .last ul { padding-top: 20px; }
