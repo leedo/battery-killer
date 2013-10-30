@@ -28,7 +28,13 @@
         if (runs) {
           $(runs).each(function(i,run) {
             if (!run) return;
-            log.prepend($('<li/>').html(run.join("<br>")));
+            var end   = new Date(run[1]);
+            var start = new Date(run[2]);
+            var diff  = end.getTime() - start.getTime();
+            var minutes = parseInt(diff / 1000 / 60);
+            var html = run.join("<br>");
+            html += "<br>" + minutes + " minutes";
+            log.prepend($('<li/>').html(html));
           });
         }
         else {
