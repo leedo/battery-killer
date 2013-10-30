@@ -78,7 +78,10 @@
             var prev = new Date(runs[current_run][1]);
             var diff = stop.getTime() - prev.getTime();
 
-            if (diff > (interval + 30) * 1000) {
+            if (console) console.log(stop, diff);
+
+            if (diff > (parseInt(interval) + 30) * 1000) {
+              console.log("gap was too long, stopping");
               clearInterval(timer);
               alert(parseInt(diff / 1000) + " second gap in timer, stopping.");
               return;
@@ -231,7 +234,7 @@
       <label for="interval">Time between refreshes (in seconds)</label>
       <input type="number" id="interval" name="interval" value="15" pattern="\d*">
       <button id="start">Start</button>
-      <div class="version">version 0.2</div>
+      <div class="version">version 0.4</div>
       </div>
       <h3>Previous Runs</h3>
       <div id="setup-log">
