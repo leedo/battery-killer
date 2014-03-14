@@ -79,6 +79,9 @@
 
           localStorage["runs"] = JSON.stringify(runs);
 
+          // still need to sample timestamps if interval set to 0
+          var real_interval = interval > 0 ? interval : 60;
+
           var timer = setInterval(function() {
             var stop = new Date();
             var prev = new Date(runs[current_run][1]);
@@ -86,7 +89,7 @@
 
             if (console) console.log(stop, diff);
 
-            if (diff > (parseInt(interval) + 30) * 1000) {
+            if (diff > (parseInt(real_interval) + 30) * 1000) {
               console.log("gap was too long, stopping");
               clearInterval(timer);
               alert(parseInt(diff / 1000) + " second gap in timer, stopping.");
@@ -95,9 +98,13 @@
 
             runs[current_run][1] = (new Date()).toString();
             localStorage["runs"] = JSON.stringify(runs);
-            frame.attr('src', urls[i++]);
-            if (i >= urls.length) i = 0;
-          }, interval * 1000);
+
+            // don't update frame src if interval was 0
+            if (interval > 0) {
+              frame.attr('src', urls[i++]);
+              if (i >= urls.length) i = 0;
+            }
+          }, real_interval * 1000);
         });
       });
     </script>
