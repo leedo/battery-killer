@@ -70,7 +70,7 @@
             return;
           }
 
-          var frame = $('#frame')
+          var frame = $('.frame')
             , setup = $('#setup')
             , i = 0
             , runs = JSON.parse(localStorage["runs"]);
@@ -116,7 +116,18 @@
 
             // don't update frame src if interval was 0
             if (interval > 0) {
-              frame.attr('src', urls[i++]);
+              var repl = $('<iframe/>', {
+                frameborder: "0",
+                scrolling: "auto",
+                "class": "frame",
+                src: urls[i++]
+              });
+
+              repl.height($(window).height());
+              repl.width($(window).width());
+
+              $('.frame').remove();
+              $('body').append(repl);
               if (i >= urls.length) i = 0;
             }
           }, real_interval * 1000);
@@ -206,11 +217,11 @@
         width: 40px;
       }
 
-      #frame {
+      .frame {
         display: block;
       }
 
-      #frame.hidden {
+      .frame.hidden {
         display: none;
       }
 
@@ -279,6 +290,6 @@
       <button id="clear">Clear</button>
       </div>
     </div>
-    <iframe frameborder="0" scrolling="auto" id="frame" class="hidden"></iframe>
+    <iframe frameborder="0" scrolling="auto" class="frame" class="hidden"></iframe>
   </body>
 </html>
