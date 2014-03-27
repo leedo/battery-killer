@@ -120,7 +120,8 @@
                 frameborder: "0",
                 scrolling: "auto",
                 "class": "frame",
-                src: urls[i++]
+                src: urls[i++],
+                sandbox: ""
               });
 
               repl.height($(window).height());
@@ -290,6 +291,6 @@
       <button id="clear">Clear</button>
       </div>
     </div>
-    <iframe frameborder="0" scrolling="auto" class="frame" class="hidden"></iframe>
+    <iframe frameborder="0" scrolling="auto" class="frame" class="hidden" sandbox=""></iframe>
   </body>
 </html>
